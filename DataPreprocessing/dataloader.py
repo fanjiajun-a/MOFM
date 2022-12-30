@@ -110,8 +110,8 @@ class DATALOADER:
     def pcc(self,data, para):
         services = self.services_num
         users = self.users_num
-        users_num = int(para['user_graph_len'])
-        services_num = int(para['service_graph_len'])
+        users_num = int(para['user_len'])
+        services_num = int(para['service_len'])
 
         pcc_matrix1 = np.corrcoef(data.T) * 0.5 + 0.5
 
