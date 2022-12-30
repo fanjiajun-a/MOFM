@@ -18,7 +18,7 @@ def train(para):
     mse_min = 9999
     rmse_min = 9999
     loss_epoch = []
-    for epoch in range(50):
+    for epoch in range(100):
         print('----------------------第{}轮----------------------------'.format(epoch+1))
         starTime1 = time.clock()
         pbar = tqdm(train_dataloader, file=sys.stdout)
