@@ -12,7 +12,7 @@ def init_para():
                     'dimension': 50,
                     'lambda': 30,
                     'maxIter': 300,
-                    'batchSize': 1024,
+                    'batchSize': 512,
                     'epoch': 100,
                     'user_len': 25,
                     'service_len': 10,
