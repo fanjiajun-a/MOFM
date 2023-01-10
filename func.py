@@ -21,6 +21,7 @@ def init_para():
                     'qos_attribute': 'tp',
                     'random_state': 1,
                     'density': 0.025,
+                    'confidence': 0.1,
                     'train_size': 0,
                     'train_set': 0.7,
                     'valid_set': 0.1,
