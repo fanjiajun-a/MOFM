@@ -48,7 +48,10 @@ class MMDNN(nn.Module):
                                int((users + services + m_users * 10 + n_services * 10 + mf_k * 20) / 5))
         self.fc3_3 = nn.Linear(int((users + services + m_users * 10 + n_services * 10 + mf_k * 20) / 5),
                                mf_k * 3)
-        self.fc3_4 = nn.Linear(mf_k * 3, 1)
+        self.fc3_4 = nn.Linear(mf_k * 3, mf_k)
+        # prediction
+        self.fc4_1 = nn.Linear(mf_k, int(mf_k / 5)) 
+        self.fc4_2 = nn.Linear(int(mf_k / 5), 1)
 
     def forward(self, x1, x2, x3):
         # 纵向
@@ -82,7 +85,9 @@ class MMDNN(nn.Module):
         x = self.relu(self.fc3_2(x))
         x = self.relu(self.fc3_3(x))
         x = self.relu(self.fc3_4(x))
-
+        # prediction
+        x = self.relu(self.fc4_1(x))
+        x = self.fc4_2(x)
         return x
       
       
