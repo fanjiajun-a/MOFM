@@ -23,7 +23,6 @@ class MMDNN(nn.Module):
         # =======================================================================================
         self.fc1_1 = nn.Linear(users + services + m_users * 10 + n_services * 10,
                                int((users + services + m_users * 10 + n_services * 10) / 2))
-        self.bn1 = nn.BatchNorm1d(int((users + services + m_users * 10 + n_services * 10) / 2))
         self.fc1_2 = nn.Linear(int((users + services + m_users * 10 + n_services * 10) / 2),
                                int((users + services + m_users * 10 + n_services * 10) / 4))
         self.fc1_3 = nn.Linear(int((users + services + m_users * 10 + n_services * 10) / 4), (m_users + n_services) * 4)
@@ -31,8 +30,6 @@ class MMDNN(nn.Module):
         # stage 2
         self.fc2_1 = nn.Linear(users + services + m_users * 10 + n_services * 10 + (m_users + n_services) * 4, int((
             users + services + m_users * 10 + n_services * 10 + (m_users + n_services) * 4) / 2))
-        self.bn2 = nn.BatchNorm1d(
-            int((users + services + m_users * 10 + n_services * 10 + (m_users + n_services) * 4) / 2))
         self.fc2_2 = nn.Linear(
             int((users + services + m_users * 10 + n_services * 10 + (m_users + n_services) * 4) / 2),
             int((users + services + m_users * 10 + n_services * 10 + (m_users + n_services) * 4) / 4))
@@ -43,7 +40,6 @@ class MMDNN(nn.Module):
         # stage 3
         self.fc3_1 = nn.Linear(users + services + m_users * 10 + n_services * 10 + mf_k * 20,
                                int((users + services + m_users * 10 + n_services * 10 + mf_k * 20) / 3))
-        self.bn3 = nn.BatchNorm1d(int((users + services + m_users * 10 + n_services * 10 + mf_k * 20) / 3))
         self.fc3_2 = nn.Linear(int((users + services + m_users * 10 + n_services * 10 + mf_k * 20) / 3),
                                int((users + services + m_users * 10 + n_services * 10 + mf_k * 20) / 5))
         self.fc3_3 = nn.Linear(int((users + services + m_users * 10 + n_services * 10 + mf_k * 20) / 5),
