@@ -24,7 +24,7 @@ def init_para():
                     'confidence': 0.1,
                     'train_size': 0,
                     'train_set': 0.7,
-                    'valid_set': 0.3,
+                    'valid_set': 0.1,
                     'GPU_Parallel': False,
                     'device': 'cuda:0',
                     'learning rate': 0.01,
