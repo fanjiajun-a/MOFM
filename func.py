@@ -27,7 +27,7 @@ def init_para():
                     'valid_set': 0.1,
                     'GPU_Parallel': False,
                     'device': 'cuda:0',
-                    'learning rate': 0.01,
+                    'learning rate': 0.001,
                     'threshold': 0.97
                     }
     return initial_para
