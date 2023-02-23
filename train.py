@@ -18,10 +18,13 @@ def train(para):
     mse_min = 9999
     rmse_min = 9999
     loss_epoch = []
-    for epoch in range(100):
+    for epoch in range(50):
         print('----------------------第{}轮----------------------------'.format(epoch+1))
-        starTime1 = time.clock()
+        starTime1 = time.perf_counter()
+        # if __name__ == '__main__':
         pbar = tqdm(train_dataloader, file=sys.stdout)
+        # else:
+        # pbar = train_dataloader
         for data, target in pbar:
             input_tensor = preprocessed_dataload.pred_tensor(data)
             optimizer.zero_grad()
@@ -33,9 +36,9 @@ def train(para):
             optimizer.step()
             if __name__ == '__main__':
                 pbar.set_description("Training: epoch %d .loss=%f " % (epoch, loss))
-        endTime1 = time.clock()
+        endTime1 = time.perf_counter()
         print('=============训练time为=={}=========='.format(endTime1 - starTime1))
-        starTime2 = time.clock()
+        starTime2 = time.perf_counter()
         with torch.no_grad():
             output_ = []
             target_ = []
@@ -60,7 +63,6 @@ def train(para):
             if __name__ == '__main__':
                 print('Test Result:MSE=%f MAE=%f RMSE=%f NMAE=%f ACC=%f' % (MSE, MAE, RMSE, NMAE,ACC))
             loss_epoch.append([MSE, MAE, RMSE, NMAE,ACC])
-
             if MAE < mae_min:
                 best_epoch = epoch
                 mae_min = MAE
@@ -68,7 +70,7 @@ def train(para):
                 rmse_min = RMSE
                 nmae = NMAE
                 acc =ACC
-        endTime2 = time.clock()
+        endTime2 = time.perf_counter()
         print('=============测试time为=={}=========='.format(endTime2-starTime2))
         print('=============总time为=={}=========='.format(endTime2-starTime1))
     if __name__ == '__main__':
