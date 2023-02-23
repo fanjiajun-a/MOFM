@@ -8,7 +8,7 @@ import sys
 from model.MOFM.MOFM import MOFM
 
 def init_para():
-    initial_para = {'net': 'MMDNN',
+    initial_para = {'net': 'MOFM',
                     'dimension': 50,
                     'lambda': 30,
                     'maxIter': 300,
@@ -84,13 +84,13 @@ def init_pred_net(para):
         para['device'] = 'cuda:0'
     para['device'] = torch.device(para['device'] if torch.cuda.is_available() else "cpu")
 
-    net = MMDNN(para).to(para['device'])
+    net = MOFM(para).to(para['device'])
 
     criterion = nn.L1Loss()
     #criterion = nn.MSELoss()
     #criterion = nn.SmoothL1Loss()
 
-    optimizer = optim.SGD(net.parameters(), lr=0.01, momentum=0.9)
+    optimizer = optim.SGD(net.parameters(), lr=para['learning rate'], momentum=0.9)
 
     if para['GPU_Parallel']:
         para['device'] = 'cuda:0'
