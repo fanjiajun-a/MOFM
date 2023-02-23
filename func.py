@@ -5,7 +5,7 @@ import random
 import torch.optim as optim
 import torch.nn as nn
 import sys
-from model.MMDNN.MMDNN import MMDNN
+from model.MOFM.MOFM import MOFM
 
 def init_para():
     initial_para = {'net': 'MMDNN',
